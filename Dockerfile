@@ -1,24 +1,29 @@
 # Etapa de construcción
 FROM gradle:8.4-jdk17 AS builder
 
+# Crear y moverse al directorio de trabajo
 WORKDIR /app
 
-# Copiar todo el proyecto
-COPY . .
+# Copiar archivos raíz necesarios para el build
+COPY gradlew gradlew.bat settings.gradle ./
+COPY gradle ./gradle  # si tienes carpeta gradle (configuración del wrapper)
 
-# Dar permisos de ejecución al wrapper de Gradle
+# Copiar el código fuente del proyecto
+COPY app ./app
+
+# Dar permisos al wrapper
 RUN chmod +x ./gradlew
 
-# Limpiar caché corrupta y compilar el JAR con shadowJar (sin modo aislado)
-RUN ./gradlew clean :app:shadowJar --no-daemon
+# Ejecutar shadowJar en el subproyecto app
+RUN ./gradlew :app:clean :app:shadowJar --no-daemon
 
-# Etapa final (imagen más ligera)
+# Etapa final: imagen liviana
 FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
-# Copiar el JAR generado desde el builder
-COPY --from=builder /app/app/build/libs/*.jar ./app.jar
+# Copiar el JAR generado
+COPY --from=builder /app/build/libs/*.jar ./app.jar
 
-# Comando para ejecutar el JAR
+# Ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "app.jar"]
