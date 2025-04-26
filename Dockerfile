@@ -23,7 +23,7 @@ FROM eclipse-temurin:17-jre
 WORKDIR /app
 
 # Copiar el JAR generado
-COPY --from=builder /app/build/libs/*.jar ./app.jar
+COPY --from=builder /app/app/build/libs/*.jar ./app.jar
 
 # Ejecutar la aplicación
 ENTRYPOINT ["java", "-jar", "app.jar"]
