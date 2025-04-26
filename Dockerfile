@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . .
 
 RUN chmod +x gradlew
-RUN ./gradlew clean shadowJar --no-daemon
+RUN ./gradlew clean shadowJar --no-daemon && ls -lh build/libs
 
 # --- Final image ---
 FROM eclipse-temurin:17-jre
