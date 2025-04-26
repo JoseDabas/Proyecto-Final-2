@@ -1,31 +1,24 @@
-# --- Etapa de compilación ---
-FROM gradle:8.4-jdk17 as builder
+# Etapa de construcción
+FROM gradle:8.4-jdk17 AS builder
 
 WORKDIR /app
 
-# Copiamos todos los archivos necesarios
+# Copiar todo el proyecto
 COPY . .
-RUN ls -l && ls -l gradlew
 
-# Aseguramos permisos para gradlew
-RUN chmod +x gradlew
+# Dar permisos de ejecución al wrapper de Gradle
+RUN chmod +x ./gradlew
 
-# Eliminamos caché corrupta y generamos el JAR con shadow
-RUN rm -rf .gradle
-RUN ./gradlew clean shadowJar --no-daemon -Dorg.gradle.unsafe.isolated-projects=true
+# Limpiar caché corrupta y compilar el JAR con shadowJar (sin modo aislado)
+RUN ./gradlew clean :app:shadowJar --no-daemon
 
-# --- Imagen final ligera ---
+# Etapa final (imagen más ligera)
 FROM eclipse-temurin:17-jre
 
 WORKDIR /app
 
-# Copiamos el jar generado desde el builder
-COPY --from=builder /app/build/libs/*.jar ./app.jar
+# Copiar el JAR generado desde el builder
+COPY --from=builder /app/app/build/libs/*.jar ./app.jar
 
-# Railway usa esta variable para el puerto
-ENV PORT=8080
-
-EXPOSE ${PORT}
-
-# Ejecutamos el JAR
-CMD ["java", "-jar", "app.jar"]
+# Comando para ejecutar el JAR
+ENTRYPOINT ["java", "-jar", "app.jar"]
