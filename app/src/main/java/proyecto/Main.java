@@ -26,7 +26,7 @@ public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         // Establecer las propiedades del sistema para MongoDB
-        String mongoUrl = "mongodb+srv://josearieldabas01:HL4OcEYAGqynX5Jj@josedatabase.7dkjm.mongodb.net/proyecto_final?retryWrites=true&w=majority&ssl=true&tlsAllowInvalidCertificates=false";
+        String mongoUrl = "mongodb+srv://josearieldabas01:HL4OcEYAGqynX5Jj@josedatabase.7dkjm.mongodb.net/proyecto_final?retryWrites=true&w=majority";
         String dbName = "proyecto_final";
         System.setProperty("URL_MONGO", mongoUrl);
         System.setProperty("DB_NOMBRE", dbName);
