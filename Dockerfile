@@ -33,7 +33,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
     && rm -rf /var/lib/apt/lists/*
 
 # Forzar opciones de SSL/TLS en la JVM
-ENV JAVA_TOOL_OPTIONS="-Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts -Djavax.net.ssl.trustStorePassword=changeit -Djdk.tls.client.protocols=TLSv1.2"
 
 # Copiar el JAR construido
 COPY --from=builder /app/app/build/libs/*.jar ./app.jar
