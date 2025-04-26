@@ -5,6 +5,7 @@ WORKDIR /app
 
 # Copiamos todos los archivos necesarios
 COPY . .
+RUN ls -l && ls -l gradlew
 
 # Aseguramos permisos para gradlew
 RUN chmod +x gradlew
