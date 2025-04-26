@@ -37,7 +37,7 @@ public class Main {
         // System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
         // System.setProperty("javax.net.debug", "ssl:handshake");
 
-        System.setProperty("jdk.tls.client.protocols", "TLSv1.2");
+        // System.setProperty("jdk.tls.client.protocols", "TLSv1.2");
 
         // Verificar la conexión a MongoDB
         try {
