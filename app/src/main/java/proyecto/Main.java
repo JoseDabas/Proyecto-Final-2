@@ -25,7 +25,7 @@ public class Main {
                 "mongodb+srv://josearieldabas01:HL4OcEYAGqynX5Jj@josedatabase.7dkjm.mongodb.net/proyecto_final?retryWrites=true&w=majority");
         System.setProperty("DB_NOMBRE", "proyecto_final");
 
-        System.setProperty("https.protocols", "TLSv1.2");
+        // System.setProperty("https.protocols", "TLSv1.2");
 
         // Mostrar las variables para depuración
         System.out.println("URL MongoDB: " + System.getProperty("URL_MONGO"));
