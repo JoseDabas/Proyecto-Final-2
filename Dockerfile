@@ -9,6 +9,8 @@ COPY gradlew gradlew.bat settings.gradle ./
 COPY gradle ./gradle
 COPY app ./app
 
+RUN apt-get update && apt-get install -y ca-certificates
+
 # Dar permisos de ejecución a gradlew
 RUN chmod +x ./gradlew
 
