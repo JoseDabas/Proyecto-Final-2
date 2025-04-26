@@ -90,10 +90,10 @@ shadowJar{
      manifest {
         attributes 'Main-Class': 'proyecto.Main'
     }
-
-
-
 }
+
+
+
 
 
 java{
@@ -113,4 +113,3 @@ tasks.named('test') {
 run{
     standardInput = System.in
 }
-
