@@ -22,7 +22,7 @@ public class Main {
         // Cargar variables de entorno desde el archivo .env
         // Establecer las propiedades del sistema para MongoDB
         System.setProperty("URL_MONGO",
-                "mongodb+srv://josearieldabas01:HL4OcEYAGqynX5Jj@josedatabase.7dkjm.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+                "mongodb+srv://josearieldabas01:HL4OcEYAGqynX5Jj@josedatabase.7dkjm.mongodb.net/proyecto_final?retryWrites=true&w=majority");
         System.setProperty("DB_NOMBRE", "proyecto_final");
 
         System.setProperty("https.protocols", "TLSv1.2");
