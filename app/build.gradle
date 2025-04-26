@@ -86,6 +86,13 @@ shadowJar{
     archiveBaseName.set("app")
     archiveClassifier.set('')
     archiveVersion.set('')
+
+     manifest {
+        attributes 'Main-Class': 'proyecto.Main'
+    }
+
+
+
 }
 
 
