@@ -22,7 +22,7 @@ FROM eclipse-temurin:17-jre
 WORKDIR /app
 
 # Copiar el archivo .env al contenedor
-COPY .env .env
+COPY app/.env ./app/.env
 
 # Copiar el JAR generado desde la fase de construcción
 COPY --from=builder /app/app/build/libs/*.jar ./app.jar
