@@ -15,10 +15,11 @@ import proyecto.grpc.UrlServiceImpl;
 import proyecto.services.UserServices;
 import com.mongodb.MongoClientSettings;
 import com.mongodb.MongoCredential;
+import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import com.mongodb.MongoClient;
 import com.mongodb.MongoException;
+import com.mongodb.client.MongoDatabase;
 
 //import io.github.cdimascio.dotenv.Dotenv;
 
@@ -36,7 +37,7 @@ public class Main {
         // System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
         // System.setProperty("javax.net.debug", "ssl:handshake");
 
-        System.setProperty("https.protocols", "TLSv1.2");
+        System.setProperty("jdk.tls.client.protocols", "TLSv1.2");
 
         // Verificar la conexión a MongoDB
         try {
