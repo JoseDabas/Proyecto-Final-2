@@ -30,9 +30,11 @@ public class Main {
         String dbName = "proyecto_final";
         System.setProperty("URL_MONGO", mongoUrl);
         System.setProperty("DB_NOMBRE", dbName);
-        System.setProperty("javax.net.ssl.trustStore", "/etc/ssl/certs/java/cacerts");
-        System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
-        System.setProperty("javax.net.debug", "ssl:handshake");
+
+        // System.setProperty("javax.net.ssl.trustStore",
+        // "/etc/ssl/certs/java/cacerts");
+        // System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
+        // System.setProperty("javax.net.debug", "ssl:handshake");
 
         System.setProperty("https.protocols", "TLSv1.2");
 
