@@ -21,9 +21,6 @@ FROM eclipse-temurin:17-jre
 # Establecer el directorio de trabajo en la imagen final
 WORKDIR /app
 
-# Copiar el archivo .env al contenedor
-COPY app/.env ./app/.env
-
 # Copiar el JAR generado desde la fase de construcción
 COPY --from=builder /app/app/build/libs/*.jar ./app.jar
 
