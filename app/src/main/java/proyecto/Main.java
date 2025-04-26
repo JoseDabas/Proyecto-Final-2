@@ -26,10 +26,13 @@ public class Main {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         // Establecer las propiedades del sistema para MongoDB
-        String mongoUrl = "mongodb+srv://josearieldabas01:HL4OcEYAGqynX5Jj@josedatabase.7dkjm.mongodb.net/proyecto_final?retryWrites=true&w=majority";
+        String mongoUrl = "mongodb+srv://josearieldabas01:HL4OcEYAGqynX5Jj@josedatabase.7dkjm.mongodb.net/proyecto_final?retryWrites=true&w=majority&ssl=true&tlsAllowInvalidCertificates=false";
         String dbName = "proyecto_final";
         System.setProperty("URL_MONGO", mongoUrl);
         System.setProperty("DB_NOMBRE", dbName);
+        System.setProperty("javax.net.ssl.trustStore", "/etc/ssl/certs/java/cacerts");
+        System.setProperty("javax.net.ssl.trustStorePassword", "changeit");
+        System.setProperty("javax.net.debug", "ssl:handshake");
 
         System.setProperty("https.protocols", "TLSv1.2");
 

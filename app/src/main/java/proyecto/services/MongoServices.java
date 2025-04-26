@@ -1,5 +1,7 @@
 package proyecto.services;
 
+import com.mongodb.ConnectionString;
+import com.mongodb.MongoClientSettings;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import dev.morphia.Datastore;
@@ -92,7 +94,15 @@ public class MongoServices<T> {
                     URL_MONGODB = "mongodb://localhost:27017";
                 }
 
-                mongoClient = MongoClients.create(URL_MONGODB);
+                // Configuración SSL para MongoDB Atlas
+                MongoClientSettings settings = MongoClientSettings.builder()
+                        .applyConnectionString(new ConnectionString(URL_MONGODB))
+                        .applyToSslSettings(builder -> {
+                            builder.enabled(true);
+                        })
+                        .build();
+
+                mongoClient = MongoClients.create(settings);
             }
             return mongoClient;
         }
